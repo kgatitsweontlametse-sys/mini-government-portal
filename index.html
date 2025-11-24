@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-Gov Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Submit a Service Request</h1>
+  <form id="requestForm">
+    <input type="text" name="name" placeholder="Full Name" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <select name="service">
+      <option value="ID Renewal">ID Renewal</option>
+      <option value="Housing Query">Housing Query</option>
+      <option value="Birth Certificate">Birth Certificate</option>
+    </select><br>
+    <textarea name="details" placeholder="Describe your request..." required></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="response"></div>
+  <script src="script.js"></script>
+</body>
+</html>
