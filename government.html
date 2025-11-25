@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Government Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to the Government Services Portal</h1>
+
+  <!-- Verification -->
+  <section>
+    <h2>Verification</h2>
+    <form id="verifyForm">
+      <input type="text" name="idNumber" placeholder="Enter ID Number" required>
+      <button type="submit">Verify</button>
+    </form>
+    <div id="verifyResponse"></div>
+  </section>
+
+  <!-- Appointment Booking -->
+  <section>
+    <h2>Book Appointment</h2>
+    <form id="appointmentForm">
+      <input type="text" name="service" placeholder="Service (e.g. ID Renewal)" required><br>
+      <input type="date" name="date" required><br>
+      <input type="time" name="time" required><br>
+      <button type="submit">Book Appointment</button>
+    </form>
+    <div id="appointmentResponse"></div>
+  </section>
+
+  <!-- Collection Info -->
+  <section>
+    <h2>Collection Information</h2>
+    <p>After booking, you will receive instructions on when and where to collect your documents.</p>
+  </section>
+
+  <script>
+    // Verification
+    document.getElementById("verifyForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch("../backend/verify.php", { method: "POST", body: formData })
+        .then(res => res.text())
+        .then(data => document.getElementById("verifyResponse").innerText = data);
+    });
+
+    // Appointment Booking
+    document.getElementById("appointmentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch("../backend/book_appointment.php", { method: "POST", body: formData })
+        .then(res => res.text())
+        .then(data => document.getElementById("appointmentResponse").innerText = data);
+    });
+  </script>
+</body>
+</html>
